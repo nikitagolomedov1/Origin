@@ -1,24 +1,13 @@
 import React from "react";
 import { Field, reduxForm } from "redux-form";
 import { connect } from "react-redux";
-import { registration } from "../../store/actions";
+import { login } from "../../store/actions";
 import { Link } from "react-router-dom";
-
-class Registration extends React.Component {
-  renderError({ error, touched }) {
-    if (touched && error) {
-      return (
-        <div className="error message">
-          <div className="header">{error}</div>
-        </div>
-      );
-    }
-  }
-
+class Login extends React.Component {
   onSubmit = formValues => {
-    this.props.registration(formValues);
+    this.props.login(formValues);
   };
-  renderInput = ({ input, label, type, meta }) => {
+  renderInput = ({ input, label, type }) => {
     return (
       <div className="form-group">
         <label>{label}</label>
@@ -29,7 +18,6 @@ class Registration extends React.Component {
             type={type}
             className="form-control"
           />
-          {this.renderError(meta)}
         </div>
       </div>
     );
@@ -39,10 +27,11 @@ class Registration extends React.Component {
       this.props.history.push("/weatherpage");
     }
   }
+
   render() {
     return (
       <div>
-        <h2>Registration</h2>
+        <h2>Login</h2>
         <form
           onSubmit={this.props.handleSubmit(this.onSubmit)}
           className="needs-validation"
@@ -54,26 +43,14 @@ class Registration extends React.Component {
             label="Username"
           />
           <Field
-            name="email"
-            type="email"
-            component={this.renderInput}
-            label="Email"
-          />
-          <Field
             name="password"
             type="password"
             component={this.renderInput}
             label="Password"
           />
-          <Field
-            name="confirm_password"
-            type="password"
-            component={this.renderInput}
-            label="Confirm password"
-          />
-          <button>Registration</button>
+          <button>Login</button>
         </form>
-        <Link to="/login">Login</Link>
+        <Link to="/">Registration</Link>
       </div>
     );
   }
@@ -85,28 +62,20 @@ const validate = formValues => {
     errors.username = "You must enter a username";
   }
 
-  if (!formValues.email) {
-    errors.email = "You must enter a email";
-  }
   if (!formValues.password) {
     errors.password = "You must enter a password";
   }
-  if (!formValues.confirm_password) {
-    errors.confirm_password = "You must confirm password";
-  }
-
   return errors;
 };
 
-
-const formWrapped = reduxForm({
-  form: "registration",
-  validate
-})(Registration);
-
 const mapStateToProps = state => ({
-  errors: state.errors,
-  auth: state.auth
+  auth: state.auth,
+  errors: state.errors
 });
 
-export default connect(mapStateToProps, { registration })(formWrapped);
+const formWrapped = reduxForm({
+  form: "login",
+  validate
+})(Login);
+
+export default connect(mapStateToProps, { login })(formWrapped);
