@@ -2,7 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import { historyList, getHistoryDetails } from "../../store/actions";
 import { Link } from "react-router-dom";
-import Header from "../components/Header";
+import Header from "../../components/Header";
 
 class HistoryList extends React.Component {
   renderList() {

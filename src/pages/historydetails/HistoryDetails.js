@@ -2,7 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import { getHistoryDetails } from "../../store/actions";
 import TableRow from "../../shared/Table";
-import Header from "../components/Header";
+import Header from "../../components/Header";
 
 class HistoryDetails extends React.Component {
   renderTable() {

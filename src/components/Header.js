@@ -6,7 +6,7 @@ import {
   NavItem,
   NavLink
 } from "reactstrap";
-import Logout from "./Logout";
+import Logout from "../components/Logout";
 
 const Header = props => {
   const [isOpen] = useState(false);

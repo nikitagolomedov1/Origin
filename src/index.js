@@ -6,7 +6,7 @@ import reduxThunk from "redux-thunk";
 import jwt_decode from 'jwt-decode';
 import setAuthToken from  './setAuthToken'
 import { setCurrentUser, logout } from './store/actions';
-import App from "./pages/components/App";
+import App from "./components/App";
 import reducers from "./store/reducers";
 
 const inititalState = {};

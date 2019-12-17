@@ -3,7 +3,7 @@ import Autocomplete from "react-google-autocomplete";
 import { connect } from "react-redux";
 import { weatherpage, makeHistory } from "../../store/actions";
 import TableRow from "../../shared/Table";
-import Header from "../components/Header";
+import Header from "../../components/Header";
 class WeatherPage extends React.Component {
   renderTable = () => {
     if (!this.props.weather) {

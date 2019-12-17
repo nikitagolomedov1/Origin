@@ -2,7 +2,7 @@ import React from "react";
 import { Field, reduxForm } from "redux-form";
 import { connect } from "react-redux";
 import { editProfile, getProfile } from "../../store/actions";
-import Header from "../components/Header";
+import Header from "../../components/Header";
 class EditProfile extends React.Component {
   renderError({ error, touched }) {
     if (touched && error) {
